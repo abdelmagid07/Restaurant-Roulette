@@ -1,8 +1,7 @@
 // frontend/src/api/restaurants.js
 export const fetchRestaurants = async (cuisine) => {
     try {
-        // Replace with deployed backend URL later
-        const BACKEND_URL = "http://localhost:5000";
+        const BACKEND_URL = "https://restaurant-roulette-9ulu.onrender.com/";
         const position = await new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition(resolve, reject);
         });

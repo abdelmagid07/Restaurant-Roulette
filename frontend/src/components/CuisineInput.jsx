@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const presets = ["Italian", "Mexican", "Sushi", "Burgers", "Indian"];
+const presets = ["Italian", "Mexican", "Sushi", "Burgers", "Indian","Chinese"];
 
 const CuisineInput = ({ items, setItems }) => {
     const [input, setInput] = useState("");

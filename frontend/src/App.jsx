@@ -5,10 +5,13 @@ import Results from "./components/Results";
 import Favorites from "./components/Favorites";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { defaultRestaurants } from "./data/defaultRestaurants";
+import { fetchRestaurants } from "./api/restaurants";
 
 export default function App() {
   const [items, setItems] = useState(defaultRestaurants);
   const [winner, setWinner] = useState(null);
+  const [restaurants, setRestaurants] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
   const [isSpinning, setIsSpinning] = useState(false);
 
@@ -16,11 +19,21 @@ export default function App() {
     if (isSpinning || items.length === 0) return;
     setIsSpinning(true);
     setWinner(null);
+    setRestaurants([]);
   };
 
-  const handleSpinEnd = (text) => {
+  const handleSpinEnd = async (text) => {
     setWinner(text);
     setIsSpinning(false);
+    setIsLoading(true);
+    try {
+      const data = await fetchRestaurants(text);
+      setRestaurants(data);
+    } catch (err) {
+      console.error("Error fetching restaurants:", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const saveFavorite = () => {
@@ -50,16 +63,14 @@ export default function App() {
         {/* LEFT SECTION (40%) - Floating Text area */}
         <div className="w-full lg:w-[40%] flex flex-col justify-center px-12 md:px-20 space-y-10">
           <div className="space-y-4">
-            <p className="text-amber-500 uppercase tracking-[0.4em] text-xs font-bold border-l border-amber-500/50 pl-4">
-              Private Dining
-            </p>
+
             <h1 className="text-5xl md:text-7xl font-serif text-white leading-[1.1] drop-shadow-2xl">
-              Let Fate <br />
-              <span className="italic text-white/80">Curate Your Palate</span>
+              Restaurant <br />
+              <span className="italic text-white/80">Roulette</span>
             </h1>
           </div>
           <p className="text-lg text-gray-400 font-light max-w-sm leading-relaxed">
-            The ultimate arbiter of taste. Surrender your decision to the obsidian wheel.
+            Let the wheel pick your meal.
           </p>
         </div>
 
@@ -109,6 +120,8 @@ export default function App() {
 
             <Results
               winner={winner}
+              restaurants={restaurants}
+              isLoading={isLoading}
               onClose={() => setWinner(null)}
               onSave={saveFavorite}
             />

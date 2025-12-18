@@ -13,6 +13,7 @@ CORS(app)  # allow frontend to call this API
 YELP_API_KEY = os.getenv("YELP_API_KEY")
 YELP_URL = "https://api.yelp.com/v3/businesses/search"
 
+
 # Map wheel results to Yelp categories
 CUISINE_TO_YELP = {
     "indian": "indpak",
@@ -38,25 +39,15 @@ def fetch_yelp(cuisine, lat, lng):
         "categories": category,
         "latitude": lat,
         "longitude": lng,
-        "radius": 10000,  # 10km
+        "radius": 10000,  
         "limit": 10,
         "sort_by": "rating",
     }
 
-    print(f"DEBUG: Fetching for {cuisine} at {lat}, {lng}")
-    print(f"DEBUG: API Key loaded: {'Yes' if YELP_API_KEY else 'No'}")
-    if YELP_API_KEY:
-        print(f"DEBUG: API Key starts with: {YELP_API_KEY[:5]}...")
-
     try:
         res = requests.get(YELP_URL, headers=HEADERS, params=params, timeout=5)
-        print(f"DEBUG: Yelp Status Code: {res.status_code}")
-        if res.status_code != 200:
-            print(f"DEBUG: Yelp Error Response: {res.text}")
-            
         res.raise_for_status()
         data = res.json().get("businesses", [])
-        print(f"DEBUG: Found {len(data)} businesses")
         # Filter/format data for frontend
         businesses = [
             {

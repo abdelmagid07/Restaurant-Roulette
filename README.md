@@ -3,9 +3,6 @@
 ## View on Vercel - Works on Startup
 [![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel)](https://restaurant-roulette-inky.vercel.app/)
 
-## Backend on Render
-[![Render Backend](https://img.shields.io/badge/Render-Backend-blue?logo=render)](https://restaurant-roulette-9ulu.onrender.com/)
-
 ---
 
 ## Features
@@ -52,6 +49,18 @@ RestaurantRoulette/
 ```
 
 ---
+## Workflow and AI tools
+AI-assistant tools were used intentionally to accelerate development and maintain full ownership and understanding of the codebase.
 
+- **ChatGPT & Claude**  
+  Used for architecture brainstorming, API integration guidance, and debugging support (e.g., Flask and React frontend communication, deployment issues, and error diagnosis).
+
+- **GitHub Copilot**  
+  Used for boilerplate generation and inline code suggestions during React and Flask development.
+
+All core logic, architectural decisions, and final implementations were reviewed, modified, and validated manually.  
+No no-code, low-code, or automated app-generation tools were used.
+
+---
 ## License
 This project is licensed under the MIT License.

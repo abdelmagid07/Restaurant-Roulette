@@ -1,7 +1,6 @@
 export default function Favorites({ favorites, onClear }) {
     return (
         <div className="w-full">
-            {/* Header: Uppercase, widely spaced, gold accent */}
             <div className="flex items-center justify-between mb-2">
                 <h3 className="font-medium text-xs tracking-[0.2em] uppercase text-yellow-500 opacity-90 flex items-center gap-2">
                     My favorites
@@ -16,14 +15,12 @@ export default function Favorites({ favorites, onClear }) {
                 )}
             </div>
 
-            {/* Grid: Glassmorphism cards */}
             <ul className="grid grid-cols-2 gap-2">
                 {favorites.map((f, i) => (
                     <li
                         key={i}
                         className="relative group flex items-center justify-center text-center px-4 py-3 rounded-md bg-zinc-900/60 backdrop-blur-sm border border-yellow-600/20 hover:border-yellow-600/50 hover:bg-zinc-800/80 transition-all duration-300 ease-out"
                     >
-                        {/* Subtle inner gradient shine on hover */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></div>
 
                         <span className="text-sm font-medium text-zinc-300 group-hover:text-yellow-100 tracking-wide z-10">

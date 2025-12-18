@@ -28,14 +28,12 @@ const CuisineInput = ({ items, setItems }) => {
                     className="bg-yellow-600 hover:bg-yellow-500 text-zinc-900 font-bold uppercase tracking-widest text-xs px-6 py-3 rounded-r-md border-y border-r border-yellow-600 hover:border-yellow-500 transition-colors flex items-center gap-2"
                 >
                     Add
-                    {/* Small chevron for a premium functional feel */}
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.33331 8.33333L6.66665 5L3.33331 1.66667" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
                     </svg>
                 </button>
             </div>
 
-            {/* Presets - Styled as minimalist ghost buttons */}
             <div className="space-y-1">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 ml-1">Quick Select</p>
                 <div className="flex flex-wrap gap-2">

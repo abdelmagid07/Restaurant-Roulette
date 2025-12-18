@@ -8,6 +8,7 @@ import { defaultRestaurants } from "./data/defaultRestaurants";
 import { fetchRestaurants } from "./api/restaurants";
 
 export default function App() {
+  // States for the app
   const [items, setItems] = useState(defaultRestaurants);
   const [winner, setWinner] = useState(null);
   const [restaurants, setRestaurants] = useState([]);
@@ -15,6 +16,7 @@ export default function App() {
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
   const [isSpinning, setIsSpinning] = useState(false);
 
+  // Function to handle spinning the wheel
   const spin = () => {
     if (isSpinning || items.length === 0) return;
     setIsSpinning(true);
@@ -22,10 +24,13 @@ export default function App() {
     setRestaurants([]);
   };
 
+  // Displays the winner and fetches the restaurants
   const handleSpinEnd = async (text) => {
+    // Set the winner and stop the wheel
     setWinner(text);
     setIsSpinning(false);
     setIsLoading(true);
+    // Get the restaurants for the winner
     try {
       const data = await fetchRestaurants(text);
       setRestaurants(data);
@@ -36,6 +41,7 @@ export default function App() {
     }
   };
 
+  // Function to save the favorite
   const saveFavorite = () => {
     if (!winner) return;
     setFavorites([...favorites, winner]);
@@ -54,13 +60,10 @@ export default function App() {
         <source src="/videos/pizza.mp4" type="video/mp4" />
       </video>
 
-      {/* Premium Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 z-10"></div>
 
-      {/* Main Container: Split screen with no gaps */}
       <div className="relative z-20 flex flex-col lg:flex-row h-full">
 
-        {/* LEFT SECTION (40%) - Floating Text area */}
         <div className="w-full lg:w-[40%] flex flex-col justify-center px-12 md:px-20 space-y-10">
           <div className="space-y-4">
 
@@ -70,20 +73,16 @@ export default function App() {
             </h1>
           </div>
           <p className="text-lg text-gray-400 font-light max-w-sm leading-relaxed">
-            Let the wheel pick your meal.
+            Spin the wheel for your next Meal.
           </p>
         </div>
 
-        {/* RIGHT PANEL (60%) - Full Height Side Panel */}
         <div className="w-full lg:w-[60%] h-full relative">
 
-          {/* The Panel Border (Goes top to bottom) */}
           <div className="absolute left-0 top-0 w-[1px] h-full bg-gradient-to-b from-transparent via-amber-500/40 to-transparent z-30"></div>
 
-          {/* The Panel Content: Final Fit for Zero-Scroll */}
           <div className="h-full bg-black/20 backdrop-blur-sm flex flex-col items-center justify-start lg:justify-center py-4 px-8 md:px-16 overflow-hidden relative">
 
-            {/* Decorative background glow centered on the wheel */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="w-full max-w-xl flex flex-col items-center gap-4 relative z-10">
@@ -108,7 +107,7 @@ export default function App() {
                       : "bg-gradient-to-r from-amber-800 via-amber-600 to-amber-800 text-black hover:tracking-[0.4em] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
                     }`}
                 >
-                  {isSpinning ? "Selecting Destination..." : "Initiate Selection"}
+                  {isSpinning ? "Selecting..." : "Spin"}
                 </button>
 
                 <div className="space-y-4 pt-4 border-t border-white/5">

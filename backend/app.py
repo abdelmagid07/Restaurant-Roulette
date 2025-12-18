@@ -8,8 +8,9 @@ from functools import lru_cache
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # allow frontend to call this API
+CORS(app)  
 
+# Using yelp business search API endpoint
 YELP_API_KEY = os.getenv("YELP_API_KEY")
 YELP_URL = "https://api.yelp.com/v3/businesses/search"
 
@@ -26,9 +27,10 @@ CUISINE_TO_YELP = {
     "burgers": "burgers",
 }
 
+# Headers for Yelp API
 HEADERS = {"Authorization": f"Bearer {YELP_API_KEY}"}
 
-# Simple in-memory cache for API responses
+# Simple caching for Yelp API responses
 @lru_cache(maxsize=100)
 def fetch_yelp(cuisine, lat, lng):
     category = CUISINE_TO_YELP.get(cuisine.lower())
@@ -53,7 +55,6 @@ def fetch_yelp(cuisine, lat, lng):
             {
                 "name": b["name"],
                 "rating": b["rating"],
-                "image": b.get("image_url", ""),
                 "address": " ".join(b["location"]["display_address"]),
                 "url": b["url"]
             }
@@ -64,7 +65,7 @@ def fetch_yelp(cuisine, lat, lng):
         print("Yelp API error:", e)
         return []
 
-@app.route("/api/restaurants")
+@app.route("/api/restaurants")  # My API endpoint for restaurants
 def get_restaurants():
     cuisine = request.args.get("cuisine")
     lat = request.args.get("lat")

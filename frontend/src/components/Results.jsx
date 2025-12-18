@@ -4,18 +4,15 @@ export default function Results({ winner, restaurants, isLoading, onClose, onSav
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
 
-            {/* Modal Container: Zinc-950 background with a subtle Gold border */}
+            {/* Modal Container*/}
             <div className="relative w-full max-w-md mx-4 overflow-hidden rounded-2xl border border-amber-500/20 bg-zinc-950 p-6 md:p-10 text-center shadow-2xl animate-in fade-in zoom-in duration-300">
 
-                {/* Top Decorative Line */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
 
-                {/* Header Text */}
                 <h2 className="text-amber-500/60 text-xs font-bold uppercase tracking-[0.4em] mb-4">
                     The Selection Is
                 </h2>
 
-                {/* Winner Name: Large Serif Font */}
                 <div className="mb-6 relative">
                     <span className="absolute -inset-1 blur-xl bg-amber-500/10 rounded-full"></span>
                     <p className="relative text-3xl md:text-4xl font-serif text-white leading-tight drop-shadow-lg">

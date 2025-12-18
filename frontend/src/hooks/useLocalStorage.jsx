@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 
+// Custom Hook for storing favorites in Local Storage
 export default function useLocalStorage(key, defaultValue) {
   const [value, setValue] = useState(() => {
     try {
@@ -15,7 +16,7 @@ export default function useLocalStorage(key, defaultValue) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch {
-      // fail silently (production-safe)
+      // fail silently 
     }
   }, [key, value]);
 

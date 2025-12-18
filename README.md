@@ -1,7 +1,7 @@
 # Restaurant Roulette
 
 ## View on Vercel - Works on Startup
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel)](https://restaurant-roulette-abdel.vercel.app/)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel)](https://restaurant-roulette-inky.vercel.app/)
 
 ## Backend on Render
 [![Render Backend](https://img.shields.io/badge/Render-Backend-blue?logo=render)](https://restaurant-roulette-9ulu.onrender.com/)

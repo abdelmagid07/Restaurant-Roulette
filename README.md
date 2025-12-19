@@ -3,6 +3,8 @@
 ## View on Vercel - Works on Startup
 [![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel)](https://restaurant-roulette-inky.vercel.app/)
 
+Render Backend may take approx. 50 seconds to return data on first api call due to free-tier "sleep" functionality.
+
 ---
 
 ## Features
